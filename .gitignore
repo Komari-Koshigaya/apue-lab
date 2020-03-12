@@ -7,6 +7,7 @@
 *.obj
 *.elf
 
+
 # Linker output
 *.ilk
 *.map
@@ -21,6 +22,14 @@
 *.a
 *.la
 *.lo
+
+# cmake
+build
+bin
+cmake_install.cmake
+CMakeCache.txt
+Makefile
+CMakeFiles
 
 # Shared objects (inc. Windows DLLs)
 *.dll
