@@ -12,10 +12,11 @@
 
 # 编译
 项目改用cmake组织
-在项目根目录新建 build 文件夹
-先后执行
+进入项目根目录,本实验是进入 lab1 目录
+ 先后执行
 
 ~~~shell
+mkdir build # 在项目根目录新建 build 文件夹
 cd build    # 在build目录编译，使得所有中间文件在build下
 cmake ..    # cmake 编译父目录
 make   
