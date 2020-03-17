@@ -1,23 +1,24 @@
 # gitee gomi
 
-#### 介绍
-This is a project which gomi is stored in, including but not limited testing and learning files.
-
-#### 软件架构
-软件架构说明
+#### Desciption
+This is a project which gomi is stored in when learning advanced programmming in unix environment teached by Pro zhujinhui of scut, including but not limited testing and learning files.
 
 
-#### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
 
-#### 使用说明
+#### Enviroment
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+CentOS Linux release 7.7.1908 (Core) in VritualBox 6.1.4
+
+
+
+#### Tool
+
+1.  using ***MobaXterm*** V20.1 in windows to connetct centos in VirtualBox 6.1.4
+2.  managing version by ***Git***
+3.  orangizing code in ***CMake***
+
+
 
 #### 参与贡献
 
@@ -25,6 +26,7 @@ This is a project which gomi is stored in, including but not limited testing and
 2.  新建 Feat_xxx 分支
 3.  提交代码
 4.  新建 Pull Request
+
 
 
 #### 码云特技
