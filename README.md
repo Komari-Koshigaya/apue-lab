@@ -20,6 +20,29 @@ CentOS Linux release 7.7.1908 (Core) in VritualBox 6.1.4
 
 
 
+#### MARK：How to use shell to connect Linux server in virtualbox
+
+原文链接：https://blog.csdn.net/huang_yong_/article/details/79456284
+
+简单可行，只需配置virtualbox:
+
+> 右键选择virtualbox里的Linux，我这里是以centos7为例子。 
+> 右键->设置->网络 
+> 连接方式选择 ：网络地址转换（NAT） 
+> 然后点高级->端口转发， 
+> 如图配置即可： 
+> ![config_in_vb.png](config_in_vb.png)
+>
+> 端口转发设置非常重要，shell连接本地ip上的9023端口，即可转发到虚拟机里的22端口。 主机端口和子系统端口可自己定义，根据实际需求设置。
+>
+> mobaxterm下ssh连接设置如下
+>
+> ![config_in_mobaxterm.png](config_in_mobaxterm.png)
+>
+> 这样配置后，会通过ssh连接上本地虚拟机，并进入 配置的特定用户目录下
+
+
+
 #### 参与贡献
 
 1.  Fork 本仓库
@@ -29,7 +52,7 @@ CentOS Linux release 7.7.1908 (Core) in VritualBox 6.1.4
 
 
 
-#### 码云特技
+#### feature
 
 1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
 2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
