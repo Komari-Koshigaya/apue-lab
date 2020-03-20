@@ -17,7 +17,10 @@ int main(int argc,char *argv[])
     {
         //printf("执行复制到目录");
         cp_to_dir(argv[1], argv[2]);
-        perror(argv[0]);
     }
-    
+    else{
+        //printf("执行复制到文件");
+        cp_to_file(argv[1], argv[2]);
+    }
+    perror(argv[0]);
 }

@@ -29,7 +29,7 @@ void cp_to_dir(char *srcfile, char *destpath)
         write(outf, buf, i);
     }while(i>0);//read出错返回-1，读取结束返回0，为了避免出错时的死循环
     
-    perror("feature2.c/cp_todir()");//打印cp_to_dir() 函数调用时的错误信息
+    perror("feature2.c/cp_to_dir()");//打印cp_to_dir() 函数调用时的错误信息
     close(outf);
     close(inf);
 }
