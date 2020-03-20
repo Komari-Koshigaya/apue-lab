@@ -18,6 +18,8 @@
 
 1. 功能一
    
+   ![功能一实验截图](doc/feature1_1.png)
+   
 2. 功能二
 
 
@@ -31,6 +33,19 @@
 
 
 #### 关键代码
+
+##### 功能一
+
+```c
+if( stat(argv[2], &st))   // 该条件代表目标文件或文件夹不存在，则执行复制到文件
+{
+    printf("copy to file！\n");
+    cp_to_file(argv[1], argv[2]);
+    return 0;
+}
+
+
+```
 
 
 
@@ -47,6 +62,9 @@ if(NULL == rindex(argv[1],'/'))//如果源文件不包含目录间隔符"/"
 else{
     p = rindex(argv[1],'/');
 }
+
+int inf = open(srcfile,O_RDONLY, 0);
+int outf = open(destfile, O_CREAT|O_WRONLY|O_EXCL, 0600);
 
 //设置目标文件名
 char *destpath = (char *) malloc(strlen(p) + strlen(argv[2]));
