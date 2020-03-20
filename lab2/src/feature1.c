@@ -15,7 +15,7 @@ void cp_to_file(char *srcfile, char *destfile)
         write(outf, buf, i);
     }while(i>0);//read出错返回-1，读取结束返回0，为了避免出错时的死循环
     
-    perror("feature1.c/cp_to_file()");//打印cp_to_dir() 函数调用时的错误信息
+    //perror("feature1.c/cp_to_file()");//打印cp_to_dir() 函数调用时的错误信息
     close(outf);
     close(inf);
 }
