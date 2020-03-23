@@ -9,3 +9,5 @@
 #include <dirent.h>
 
 int myls(char *path);   //打印当前工作目录的文件信息
+
+void print_type(mode_t st_mode);  //打印文件类型
