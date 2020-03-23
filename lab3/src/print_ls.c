@@ -1,6 +1,7 @@
 #include <head.h>
 
-void print_type(mode_t st_mode)  //打印文件类型
+//打印文件类型
+void print_type(mode_t st_mode)  
 {
     if(S_ISREG(st_mode))//普通文件
     {
@@ -32,4 +33,36 @@ void print_type(mode_t st_mode)  //打印文件类型
     }else{
         printf(";");
     }
+    printf(" ");
+}
+
+
+//打印文件权限
+void print_perm(mode_t st_mode)
+{
+    printf(" ");
+}
+
+//打印文件连接数
+void print_link(nlink_t st_nlink)
+{
+    printf(" ");
+}
+
+//打印文件 所有者
+void print_uname(uid_t st_uid)
+{
+    printf(" ");
+}
+
+//打印文件所有者所在组
+void print_gname(gid_t st_gid)
+{
+    printf(" ");
+}
+
+//打印文件最后修改时间
+void print_time(time_t st_mtime)
+{
+    printf(" ");
 }
