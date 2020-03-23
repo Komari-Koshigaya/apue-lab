@@ -6,6 +6,6 @@
 #include <fcntl.h>
 #include <string.h>
 #include <errno.h>
+#include <dirent.h>
 
-
-
+int myls(char *path);   //打印当前工作目录的文件信息
