@@ -27,8 +27,8 @@ int myls(char *path)
     printf("file in %s include:\n", path);
     while( (currentdp = readdir(currentdir)) != NULL )  //循环获取目录下的文件
     {
-        
-        curr_file = (char *) malloc(strlen("/123") + strlen(path) + strlen(currentdp->d_name));
+        //局部变量，用malloc申请内存,strlen不算'\0'，所以需要+1
+        curr_file = (char *) malloc(strlen("/") + strlen(path) + strlen(currentdp->d_name) + 1);
         sprintf(curr_file, "%s/%s", path, currentdp->d_name); //设置curr_file为 当前路径/当前文件名
         //printf("%s\n", curr_file);
         
