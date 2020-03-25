@@ -53,7 +53,7 @@ void print_perm(mode_t st_mode)
 	printf("%s", (S_IROTH & st_mode) ? "r" : "-");
 	printf("%s", (S_IWOTH & st_mode) ? "w" : "-");
 	printf("%s", (S_IXOTH & st_mode) ? "x" : "-");
-	
+
 	printf(" ");
 }
 
@@ -66,6 +66,9 @@ void print_link(nlink_t st_nlink)
 //打印文件 所有者
 void print_uname(uid_t st_uid)
 {
+	struct passwd *pwuid;
+	pwuid = getpwuid(st_uid);
+	printf("%s", pwuid->pw_name);
     printf(" ");
 }
 
@@ -76,7 +79,14 @@ void print_gname(gid_t st_gid)
 }
 
 //打印文件最后修改时间
-// void print_time(time_t st_mtime)
-// {
-//     printf(" ");
-// }
+void print_time(time_t st_mtimes)
+{
+	//12个月份的英文缩写
+	char *month[]={"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+    struct tm *mtime;
+    mtime = localtime(&st_mtimes);
+    //打印文件的日期 时间
+    printf("%s %02d %02d:%02d:%02d", month[mtime->tm_mon], mtime->tm_mday, mtime->tm_hour, mtime->tm_min, mtime->tm_sec);
+
+    printf(" ");
+}
