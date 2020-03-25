@@ -40,28 +40,20 @@ void print_type(mode_t st_mode)
 void print_perm(mode_t st_mode)
 {
 	// 用户的三个属性
-	if(S_IRUSR & st_mode)		printf("r");
-	else						printf("-");
-	if(S_IWUSR & st_mode)		printf("w");
-	else						printf("-");
-	if(S_IXUSR & st_mode)		printf("x");
-	else						printf("-");
+	printf("%s", (S_IRUSR & st_mode) ? "r" : "-");
+	printf("%s", (S_IWUSR & st_mode) ? "w" : "-");
+	printf("%s", (S_IXUSR & st_mode) ? "x" : "-");
 
 	// 用户组的三个属性
-	if(S_IRGRP & st_mode)		printf("r");
-	else						printf("-");
-	if(S_IWGRP & st_mode)		printf("w");
-	else						printf("-");
-	if(S_IXGRP & st_mode)		printf("x");
-	else						printf("-");
+	printf("%s", (S_IRGRP & st_mode) ? "r" : "-");
+	printf("%s", (S_IWGRP & st_mode) ? "w" : "-");
+	printf("%s", (S_IXGRP & st_mode) ? "x" : "-");
 
 	// 其他用户的三个属性
-	if(S_IROTH & st_mode)		printf("r");
-	else						printf("-");
-	if(S_IWOTH & st_mode)		printf("w");
-	else						printf("-");
-	if(S_IXOTH & st_mode)		printf("x");
-	else						printf("-");
+	printf("%s", (S_IROTH & st_mode) ? "r" : "-");
+	printf("%s", (S_IWOTH & st_mode) ? "w" : "-");
+	printf("%s", (S_IXOTH & st_mode) ? "x" : "-");
+	
 	printf(" ");
 }
 
