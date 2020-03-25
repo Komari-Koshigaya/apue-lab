@@ -66,15 +66,18 @@ void print_link(nlink_t st_nlink)
 //打印文件 所有者
 void print_uname(uid_t st_uid)
 {
-	struct passwd *pwuid;
-	pwuid = getpwuid(st_uid);
-	printf("%s", pwuid->pw_name);
+	struct passwd *user = NULL;
+	user = getpwuid(st_uid);
+	printf("%s", (*user).pw_name);
     printf(" ");
 }
 
 //打印文件所有者所在组
 void print_gname(gid_t st_gid)
 {
+	struct group *group = NULL;
+	group = getgrgid(st_gid);
+	printf("%s", group->gr_name);
     printf(" ");
 }
 

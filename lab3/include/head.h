@@ -9,6 +9,7 @@
 #include <dirent.h>
 #include <time.h>
 #include <pwd.h>
+#include <grp.h>
 
 int myls(char *path);   //打印当前工作目录的文件信息
 
