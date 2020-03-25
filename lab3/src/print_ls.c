@@ -87,6 +87,5 @@ void print_time(time_t st_mtimes)
     mtime = localtime(&st_mtimes);
     //打印文件的日期 时间
     printf("%s %02d %02d:%02d:%02d", month[mtime->tm_mon], mtime->tm_mday, mtime->tm_hour, mtime->tm_min, mtime->tm_sec);
-
     printf(" ");
 }
