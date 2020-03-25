@@ -1,5 +1,6 @@
 #include <head.h>
 
+
 //打印文件类型
 void print_type(mode_t st_mode)  
 {
@@ -68,7 +69,7 @@ void print_uname(uid_t st_uid)
 {
 	struct passwd *user = NULL;
 	user = getpwuid(st_uid);
-	printf("%s", (*user).pw_name);
+	printf("%s", user->pw_name);
     printf(" ");
 }
 
