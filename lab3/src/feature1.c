@@ -43,7 +43,7 @@ int myls(char *path)
         print_uname(curr_stat.st_uid);//打印文件 所有者
         print_gname(curr_stat.st_gid);//打印文件所有者所在组
         //print_size(curr_stat.st_size);//打印文件大小
-        print_time(curr_stat.st_mtime);//打印文件最后修改时间
+        // print_time(curr_stat.st_mtime);//打印文件最后修改时间
         
         
         printf("%s\n", currentdp->d_name); //打印当前文件名

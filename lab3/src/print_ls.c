@@ -33,14 +33,36 @@ void print_type(mode_t st_mode)
     }else{
         printf(";");
     }
-    printf(" ");
 }
 
 
 //打印文件权限
 void print_perm(mode_t st_mode)
 {
-    printf(" ");
+	// 用户的三个属性
+	if(S_IRUSR & st_mode)		printf("r");
+	else						printf("-");
+	if(S_IWUSR & st_mode)		printf("w");
+	else						printf("-");
+	if(S_IXUSR & st_mode)		printf("x");
+	else						printf("-");
+
+	// 用户组的三个属性
+	if(S_IRGRP & st_mode)		printf("r");
+	else						printf("-");
+	if(S_IWGRP & st_mode)		printf("w");
+	else						printf("-");
+	if(S_IXGRP & st_mode)		printf("x");
+	else						printf("-");
+
+	// 其他用户的三个属性
+	if(S_IROTH & st_mode)		printf("r");
+	else						printf("-");
+	if(S_IWOTH & st_mode)		printf("w");
+	else						printf("-");
+	if(S_IXOTH & st_mode)		printf("x");
+	else						printf("-");
+	printf(" ");
 }
 
 //打印文件连接数
@@ -62,7 +84,7 @@ void print_gname(gid_t st_gid)
 }
 
 //打印文件最后修改时间
-void print_time(time_t st_mtime)
-{
-    printf(" ");
-}
+// void print_time(time_t st_mtime)
+// {
+//     printf(" ");
+// }
