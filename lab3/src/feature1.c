@@ -46,7 +46,7 @@ int myls(char *path)
         printf("%s\n", currentdp->d_name); //打印当前文件名
      }   
 
-    
+    printf("\n");
     closedir(currentdir);
     return 0;
 }
