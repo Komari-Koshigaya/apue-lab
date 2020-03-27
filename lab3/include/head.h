@@ -11,7 +11,8 @@
 #include <pwd.h>
 #include <grp.h>
 
-int myls(char *path);   //打印当前工作目录的文件信息
+// int myls(char *path);   //打印当前工作目录的文件信息
+int myls(char *path, int hide_file);   //打印当前工作目录的文件信息, hide_file 决定是否显示隐藏文件
 
 void print_type(mode_t st_mode);  //打印文件类型
 
