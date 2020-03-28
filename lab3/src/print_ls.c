@@ -69,7 +69,7 @@ void print_uname(uid_t st_uid)
 {
 	struct passwd *user = NULL;
 	user = getpwuid(st_uid);
-	printf("%s", user->pw_name);
+	printf("%-6s", user->pw_name);
     printf(" ");
 }
 
@@ -78,7 +78,7 @@ void print_gname(gid_t st_gid)
 {
 	struct group *group = NULL;
 	group = getgrgid(st_gid);
-	printf("%s", group->gr_name);
+	printf("%-6s", group->gr_name);
     printf(" ");
 }
 
