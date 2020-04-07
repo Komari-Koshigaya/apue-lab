@@ -86,7 +86,8 @@ void process_mycp(char *filename)
     }
     else if ( pid_child == 0 )
     {
-    	int result = execlp("src/mycp", "mycp", filename, "/home/niejun/test", NULL);
+    	// int result = execlp("src/mycp", "mycp", filename, "/home/niejun/test", NULL);
+    	int result = execlp("/home/niejun/aos/lab/lab4/src/mycp", "mycp", filename, "/home/niejun/test", NULL);
     	if ( -1 == result)
     	{
 			printf("execlp mycp error!\n");
