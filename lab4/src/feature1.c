@@ -5,9 +5,9 @@
 int myls_with_cp(char *path)
 {
 
-    DIR *currentdir;
-    currentdir = opendir(path);   //打开当前目录，若path是相对路径，如 ：../src 并不需要特殊处理
-    
+    DIR *currentdir = opendir(path);   //打开当前目录，若path是相对路径，如 ：../src 并不需要特殊处理
+    // DIR *temp = opendir(path);
+
     if(path == NULL)   
     {
         printf("invalid path"); 
@@ -20,12 +20,24 @@ int myls_with_cp(char *path)
         return -1;
     }
 
-    struct dirent *currentdp;
-    struct stat curr_stat;
-    
-    chdir(path);	//把工作路径切换到path目录，省去了后面获取文件信息是，拼接目录和文件名的步骤
+	chdir(path);	//把工作路径切换到path目录，省去了后面获取文件信息是，拼接目录和文件名的步骤
     printf("\nDIR: %s\n", get_current_dir_name() );
-    
+
+	print_directory(currentdir, 1);
+	// print_directory(temp, 1);
+
+    printf("\n");
+    chdir("..");
+    closedir(currentdir);
+    // closedir(temp);
+    return 0;
+}
+
+// DIR *currentdir 目录文件, int trav_subdi 是否遍历子目录，1代表遍历，0遍历
+int print_directory(DIR *currentdir, int trav_subdir)
+{
+	struct dirent *currentdp;
+    struct stat curr_stat;
     while( (currentdp = readdir(currentdir)) != NULL )  //循环获取目录下的文件
     {
 
@@ -33,9 +45,6 @@ int myls_with_cp(char *path)
     	{
     		continue;
     	}
-        //局部变量，用malloc申请内存,strlen不算'\0'，所以需要+1  由于使用了 chmod(path)  下面拼接文件名全称的代码可以省去
-        // curr_file = (char *) malloc(strlen("/") + strlen(path) + strlen(currentdp->d_name) + 1);
-        // sprintf(curr_file, "%s/%s", path, currentdp->d_name); //设置curr_file为 当前路径/当前文件名
 
         if( stat(currentdp->d_name, &curr_stat) < 0)//获取文件的属性，并判断是否获取成功
         {
@@ -43,9 +52,6 @@ int myls_with_cp(char *path)
             continue;
         }
 
-		if( S_ISDIR(curr_stat.st_mode) ){//若是目录文件，则遍历子目录文件
-			myls_with_cp(currentdp->d_name);
-		}
         print_type(curr_stat.st_mode);//打印文件类型
         print_perm(curr_stat.st_mode);//打印文件权限
         printf("%ld ", curr_stat.st_nlink);//打印文件连接数
@@ -55,11 +61,11 @@ int myls_with_cp(char *path)
         print_time(curr_stat.st_mtime);//打印文件最后修改时间
         printf("%s\n", currentdp->d_name); //打印当前文件名
 
-
-     }   
-
-    printf("\n");
-    chdir("..");
-    closedir(currentdir);
-    return 0;
+		if( trav_subdir == 1 && S_ISDIR(curr_stat.st_mode) ){//若是目录文件，则遍历子目录文件
+			myls_with_cp(currentdp->d_name);
+		}
+     } 
 }
+
+    
+    
