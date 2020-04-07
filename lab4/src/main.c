@@ -17,6 +17,7 @@ int main(int argc,char *argv[])
     }
 
 	myls_with_cp(target);
+    printf("\n");
     perror(argv[0]);
     return 0;
 }
