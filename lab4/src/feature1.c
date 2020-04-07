@@ -69,9 +69,37 @@ int print_directory(DIR *currentdir, int trav_subdir)
         // print_time(curr_stat.st_mtime);//打印文件最后修改时间
         printf("%s ", currentdp->d_name); //打印当前文件名
 
+        process_mycp(currentdp->d_name);
      }
      // printf("\n");
 }
 
-    
-    
+//创建一个子进程，用于复制文件到指定目录
+void process_mycp(char *filename)
+{
+
+    pid_t pid_child, pid_return;
+    pid_child = fork();
+    if( pid_child < 0)
+    {
+    	printf("Error occured on forking.\n");
+    }
+    else if ( pid_child == 0 )
+    {
+    	int result = execlp("src/mycp", "mycp", filename, "/home/niejun/test", NULL);
+    	if ( -1 == result)
+    	{
+			printf("execlp mycp error!\n");
+		}
+    	exit(0);
+    }
+    do{
+    	pid_return = waitpid(pid_child, NULL, WNOHANG);
+
+    }while( pid_return == 0 );
+
+    if(pid_return != pid_child)
+    {
+    	printf("some error occured when wait mycp exiting!\n");
+    }
+}
