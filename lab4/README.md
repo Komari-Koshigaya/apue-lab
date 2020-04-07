@@ -29,21 +29,48 @@
 
 ![实验截图](doc/feature1_1.png)
 
-
+![实验截图](doc/feature1_2.png)
 
 #### 关键代码
 
 ```c
+//创建一个子进程，用于复制文件到指定目录
+void process_mycp(char *filename)
+{
 
+    pid_t pid_child, pid_return;
+    pid_child = fork();
+    if( pid_child < 0)
+    {
+    	printf("Error occured on forking.\n");
+    }
+    else if ( pid_child == 0 )
+    {
+    	// int result = execlp("src/mycp", "mycp", filename, "/home/niejun/test", NULL);
+    	int result = execlp("/home/niejun/aos/lab/lab4/src/mycp", "mycp", filename, "/home/niejun/test", NULL);
+    	if ( -1 == result)
+    	{
+			printf("execlp mycp error!\n");
+		}
+    	exit(0);
+    }
+    do{
+    	pid_return = waitpid(pid_child, NULL, WNOHANG);
+
+    }while( pid_return == 0 );
+
+    if(pid_return != pid_child)
+    {
+    	printf("some error occured when wait mycp exiting!\n");
+    }
+}
 ```
 
 
 
 ##### 问题思考
 
-> 1. 
->    
->2. 
+> 2. 如何先打印给定目录的所有文件，再遍历子目录，打印出子目录的所有文件？
 
 
 
