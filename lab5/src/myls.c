@@ -43,11 +43,12 @@ int print_directory(DIR *currentdir, int trav_subdir)
             printf("get stat error\n");
             continue;
         }
-
+        if( S_ISDIR(curr_stat.st_mode) ){
+            printf("\033[40;32m%s \033[0m ", currentdp->d_name); //打印当前绿色目录名
+            continue;
+        }
         printf("%s ", currentdp->d_name); //打印当前文件名
-		if( S_ISDIR(curr_stat.st_mode) ){
-			continue;
-		}
+		
 
         thread_mycp(currentdp->d_name);//若非目录文件，则复制该文件
      }
