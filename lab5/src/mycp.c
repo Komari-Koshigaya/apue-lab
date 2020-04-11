@@ -16,6 +16,14 @@ void * mycp(void *filename)
         p = rindex(srcfile,'/');
     }
     
+    if(access(destpath,0)==-1)//access函数查看待复制的目录是否存在
+	{
+	    if (mkdir(destpath,0777))//如果不存在就用mkdir函数来创建
+		{
+		   printf("creat dir failed!!!");
+		}
+	} 
+
     //设置目标文件名
     char *destfile = (char *) malloc(strlen(p) + strlen(destpath));
     sprintf(destfile, "%s%s", destpath, p);
