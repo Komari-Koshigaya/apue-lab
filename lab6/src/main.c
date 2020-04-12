@@ -9,7 +9,7 @@ int main(int argc,char *argv[])
 
     for(i = 0; i < 5; i++)
     {
-    	int result = pthread_create(&phil[i],NULL,(void *)dining_thread, (void*)i);
+    	int result = pthread_create(&phil[i],NULL,(void *)dining_thread, i);
 	    if( result != 0){
 	    	printf("thread creation failed\n");
 			exit(1);
@@ -26,7 +26,7 @@ int main(int argc,char *argv[])
 
 void *dining_thread(void *num)
 {
-	int philno = (int)num;//哲学家编号
+	int philno = num;//哲学家编号
 	printf("%d号哲学家开始思考\n", philno);
 	sleep(1);//在Linux下,sleep()里面的单位是秒，而不是毫秒
 	while(1){
