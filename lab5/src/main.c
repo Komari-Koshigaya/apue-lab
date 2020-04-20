@@ -22,7 +22,8 @@ int main(int argc,char *argv[])
     	printf("thread creation failed\n");
 		exit(1);
     }
-    pthread_join(myls,NULL);
+    // pthread_join(myls,NULL);
+    pthread_exit(0);  //让所有线程结束再退出进程，实现并行 cp
     perror(argv[0]);
     return 0;
 }

@@ -65,6 +65,6 @@ void thread_mycp(char *filename)
         printf("thread creation failed\n");
         exit(1);
     }
-    pthread_join(thread_mycp,NULL);
+    // pthread_join(thread_mycp,NULL); //此方法使得 cp操作串行进行，改用 在main中 使用pthread_exit(0);
 
 }
